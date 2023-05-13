@@ -15,7 +15,7 @@ enum CustomFont: String {
     case italic = "Poppins-Italic"
     case medium = "Poppins-Medium"
     case regular = "Poppins-Regular"
-    case remiBold = "Poppins-SemiBold"
+    case semiBold = "Poppins-SemiBold"
 }
 
 final class FontManager {

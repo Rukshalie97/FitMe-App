@@ -32,6 +32,9 @@
 		AAF40F6D2A1000690050245F /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAF40F5C2A1000690050245F /* Poppins-SemiBold.ttf */; };
 		AAF40F6F2A1001570050245F /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F6E2A1001570050245F /* FontManager.swift */; };
 		AAF40F772A10037B0050245F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AAF40F762A10037B0050245F /* SnapKit */; };
+		AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F782A10061B0050245F /* SelectGenderViewController.swift */; };
+		AAF40F7C2A1006DA0050245F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F7B2A1006DA0050245F /* Color.swift */; };
+		AAF40F9C2A1018230050245F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F9B2A1018230050245F /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,9 @@
 		AAF40F5B2A1000690050245F /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		AAF40F5C2A1000690050245F /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		AAF40F6E2A1001570050245F /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		AAF40F782A10061B0050245F /* SelectGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderViewController.swift; sourceTree = "<group>"; };
+		AAF40F7B2A1006DA0050245F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AAF40F9B2A1018230050245F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		AAF40F312A0FFC140050245F /* Fit Me */ = {
 			isa = PBXGroup;
 			children = (
+				AAF40F7A2A1006CE0050245F /* Extension */,
 				AAF40F492A1000290050245F /* Fonts */,
 				AAF40F482A0FFEF80050245F /* Models */,
 				AAF40F472A0FFEEF0050245F /* Managers */,
@@ -111,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				AAF40F362A0FFC140050245F /* ViewController.swift */,
+				AAF40F782A10061B0050245F /* SelectGenderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -153,6 +161,15 @@
 				AAF40F4A2A1000410050245F /* Poppins-Black.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AAF40F7A2A1006CE0050245F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AAF40F7B2A1006DA0050245F /* Color.swift */,
+				AAF40F9B2A1018230050245F /* View.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAF40F372A0FFC140050245F /* ViewController.swift in Sources */,
+				AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */,
 				AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */,
 				AAF40F6F2A1001570050245F /* FontManager.swift in Sources */,
 				AAF40F352A0FFC140050245F /* SceneDelegate.swift in Sources */,
+				AAF40F9C2A1018230050245F /* View.swift in Sources */,
+				AAF40F7C2A1006DA0050245F /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
