@@ -35,6 +35,10 @@
 		AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F782A10061B0050245F /* SelectGenderViewController.swift */; };
 		AAF40F7C2A1006DA0050245F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F7B2A1006DA0050245F /* Color.swift */; };
 		AAF40F9C2A1018230050245F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F9B2A1018230050245F /* View.swift */; };
+		AAF40F9E2A101EFD0050245F /* SelectGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F9D2A101EFD0050245F /* SelectGoalViewController.swift */; };
+		AAF40FA02A122B850050245F /* SelectBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F9F2A122B850050245F /* SelectBirthdayViewController.swift */; };
+		AAF40FA22A1230060050245F /* SelectHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40FA12A1230060050245F /* SelectHeightViewController.swift */; };
+		AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40FA32A123C030050245F /* SelectWeightViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +71,10 @@
 		AAF40F782A10061B0050245F /* SelectGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderViewController.swift; sourceTree = "<group>"; };
 		AAF40F7B2A1006DA0050245F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		AAF40F9B2A1018230050245F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		AAF40F9D2A101EFD0050245F /* SelectGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalViewController.swift; sourceTree = "<group>"; };
+		AAF40F9F2A122B850050245F /* SelectBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBirthdayViewController.swift; sourceTree = "<group>"; };
+		AAF40FA12A1230060050245F /* SelectHeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHeightViewController.swift; sourceTree = "<group>"; };
+		AAF40FA32A123C030050245F /* SelectWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWeightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,10 @@
 			children = (
 				AAF40F362A0FFC140050245F /* ViewController.swift */,
 				AAF40F782A10061B0050245F /* SelectGenderViewController.swift */,
+				AAF40F9D2A101EFD0050245F /* SelectGoalViewController.swift */,
+				AAF40F9F2A122B850050245F /* SelectBirthdayViewController.swift */,
+				AAF40FA12A1230060050245F /* SelectHeightViewController.swift */,
+				AAF40FA32A123C030050245F /* SelectWeightViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -266,10 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF40FA22A1230060050245F /* SelectHeightViewController.swift in Sources */,
 				AAF40F372A0FFC140050245F /* ViewController.swift in Sources */,
+				AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */,
 				AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */,
 				AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */,
+				AAF40F9E2A101EFD0050245F /* SelectGoalViewController.swift in Sources */,
 				AAF40F6F2A1001570050245F /* FontManager.swift in Sources */,
+				AAF40FA02A122B850050245F /* SelectBirthdayViewController.swift in Sources */,
 				AAF40F352A0FFC140050245F /* SceneDelegate.swift in Sources */,
 				AAF40F9C2A1018230050245F /* View.swift in Sources */,
 				AAF40F7C2A1006DA0050245F /* Color.swift in Sources */,
