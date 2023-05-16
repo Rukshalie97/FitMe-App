@@ -9,128 +9,98 @@ import UIKit
 import SnapKit
 
 class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
-    
+
     let titleLabel = UILabel()
-    let unitSegmentedControl = UISegmentedControl(items: ["cm", "feet"])
-    let heightPicker = UIPickerView()
+    let continueButton = UIButton()
     let heightTextField = UITextField()
-    let heightsInCm = (100...250).map { "\($0)" }  // Heights from 100cm to 250cm
-    let heightsInFeet = (3...8).map { "\($0)" }  // Heights from 3 feet to 8 feet
-    
+    let unitSegmentedControl = UISegmentedControl(items: ["Feet", "Cm"])
+    let heightPickerView = UIPickerView()
+
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
-    
+
+    // MARK: - Setup Views
     private func setupViews() {
         view.backgroundColor = .white
-        
+
         titleLabel.text = "Select Height"
         titleLabel.font = UIFont.systemFont(ofSize: 26)
         titleLabel.textColor = .black
         view.addSubview(titleLabel)
-        
+
         unitSegmentedControl.selectedSegmentIndex = 0
-        unitSegmentedControl.addTarget(self, action: #selector(unitChanged(_:)), for: .valueChanged)
         view.addSubview(unitSegmentedControl)
-        
-        heightPicker.delegate = self
-        heightPicker.dataSource = self
-        view.addSubview(heightPicker)
-        
-        heightTextField.placeholder = "Enter height"
+
+        heightTextField.borderStyle = .roundedRect
+        heightTextField.textAlignment = .center
+        heightTextField.keyboardType = .decimalPad
         heightTextField.delegate = self
         view.addSubview(heightTextField)
-        
-        let continueButton = createContinueButton()
+
+        heightPickerView.delegate = self
+        heightPickerView.dataSource = self
+        view.addSubview(heightPickerView)
+
+        continueButton.setTitle("Continue", for: .normal)
+        continueButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        continueButton.setTitleColor(.white, for: .normal)
+        continueButton.backgroundColor = UIColor(hexString: "#7850BF")
+        continueButton.layer.cornerRadius = 5
         view.addSubview(continueButton)
-        
-        continueButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(UIScreen.main.bounds.size.width - 40)
-            make.height.equalTo(50)
-        }
     }
-    
+
     private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
             make.centerX.equalToSuperview()
         }
-        
+
         unitSegmentedControl.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
-        
-        heightPicker.snp.makeConstraints { make in
+
+        heightTextField.snp.makeConstraints { make in
             make.top.equalTo(unitSegmentedControl.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(40)
         }
-        
-        heightTextField.snp.makeConstraints { make in
-            make.top.equalTo(heightPicker.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().offset(-40)
-        }
-    }
-    
-    private func createContinueButton() -> UIButton {
-        let button = UIButton()
-        button.setTitle("Continue", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .green
-        button.layer.cornerRadius = 25
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }
-    
-    // MARK: - UIPickerViewDelegate & UIPickerViewDataSource
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if unitSegmentedControl.selectedSegmentIndex == 0 {
-            return heightsInCm.count
-        } else {
-            return heightsInFeet.count
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if unitSegmentedControl.selectedSegmentIndex == 0 {
-           
-            return heightsInCm[row]
-        } else {
-            return heightsInFeet[row]
-        }
-    }
 
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if unitSegmentedControl.selectedSegmentIndex == 0 {
-            heightTextField.text = heightsInCm[row]
-        } else {
-            heightTextField.text = heightsInFeet[row]
+        heightPickerView.snp.makeConstraints { make in
+            make.top.equalTo(heightTextField.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+
+        continueButton.snp.makeConstraints { make in
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(465)
+            make.width.equalTo(359)
+            make.height.equalTo(48)
         }
     }
 
     // MARK: - UITextFieldDelegate
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()  // Dismiss the keyboard.
+        textField.resignFirstResponder()
         return true
     }
 
-    // MARK: - Actions
+    // MARK: - UIPickerViewDelegate and UIPickerViewDataSource
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
 
-    @objc func unitChanged(_ sender: UISegmentedControl) {
-        heightPicker.reloadAllComponents()  // Reload the picker view when the unit is changed.
-        heightTextField.text = ""  // Clear the text field when the unit is changed.
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return unitSegmentedControl.selectedSegmentIndex == 0 ? 1000 : 500
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return unitSegmentedControl.selectedSegmentIndex == 0 ? "\(row + 1) ft" : "\(row + 1) cm"
     }
 }
+

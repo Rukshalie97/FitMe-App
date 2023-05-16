@@ -1,14 +1,14 @@
 //
-//  SelectWeightViewController.swift
+//  SelectGoalWeightViewController.swift
 //  Fit Me
 //
-//  Created by Rukshalie  on 2023-05-15.
+//  Created by Rukshalie  on 2023-05-16.
 //
 
 import UIKit
 import SnapKit
 
-class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class SelectGoalWeightViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     let titleLabel = UILabel()
     let continueButton = UIButton()
@@ -27,13 +27,10 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
     private func setupViews() {
         view.backgroundColor = .white
 
-        titleLabel.text = "Select Weight"
+        titleLabel.text = "Select Goal Weight"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
         titleLabel.textColor = .black
         view.addSubview(titleLabel)
-        
-            
-
 
         unitSegmentedControl.selectedSegmentIndex = 0
         view.addSubview(unitSegmentedControl)
@@ -51,7 +48,7 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
         continueButton.setTitle("Continue", for: .normal)
         continueButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         continueButton.setTitleColor(.white, for: .normal)
-        continueButton.backgroundColor = UIColor(hexString: "#7850BF")
+        continueButton.backgroundColor = UIColor(hex: "#7850BF")
         continueButton.layer.cornerRadius = 24
         view.addSubview(continueButton)
     }
@@ -68,8 +65,6 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
             make.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-69)
         }
 
-        
-
         weightTextField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(200)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-400)
@@ -78,7 +73,6 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
             make.width.equalTo(97)
             make.height.equalTo(64)
         }
-
 
         weightPickerView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(450)
@@ -91,19 +85,7 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(400)
             make.width.equalTo(359)
             make.height.equalTo(48)
-        
-
-           
         }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
-            make.centerX.equalToSuperview()
-        }
-        
-        
-
-
     }
 
     // MARK: - UITextFieldDelegate
@@ -112,7 +94,6 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
         return true
     }
 
-  
     // MARK: - UIPickerViewDelegate and UIPickerViewDataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -129,29 +110,5 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedValue = unitSegmentedControl.selectedSegmentIndex == 0 ? "\(row + 1) lbs" : "\(row + 1) kg"
         weightTextField.text = selectedValue
-    }
-
-
-}
-
-extension UIColor {
-    convenience init(hexString: String) {
-        let scanner = Scanner(string: hexString)
-        let prefixLen = hexString.hasPrefix("#") ? 1 : 0 // check if the hex color starts with #
-        
-        scanner.currentIndex = hexString.index(hexString.startIndex, offsetBy: prefixLen)
-        
-        var rgbValue: UInt64 = 0
-        scanner.scanHexInt64(&rgbValue)
-        
-        let r = (rgbValue & 0xff0000) >> 16
-        let g = (rgbValue & 0xff00) >> 8
-        let b = rgbValue & 0xff
-        
-        self.init(
-            red: CGFloat(r) / 0xff,
-            green: CGFloat(g) / 0xff,
-            blue: CGFloat(b) / 0xff, alpha: 1
-        )
     }
 }

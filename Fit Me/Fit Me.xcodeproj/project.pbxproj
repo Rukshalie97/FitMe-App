@@ -39,6 +39,7 @@
 		AAF40FA02A122B850050245F /* SelectBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F9F2A122B850050245F /* SelectBirthdayViewController.swift */; };
 		AAF40FA22A1230060050245F /* SelectHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40FA12A1230060050245F /* SelectHeightViewController.swift */; };
 		AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40FA32A123C030050245F /* SelectWeightViewController.swift */; };
+		AAF7E90A2A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9092A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		AAF40F9F2A122B850050245F /* SelectBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBirthdayViewController.swift; sourceTree = "<group>"; };
 		AAF40FA12A1230060050245F /* SelectHeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHeightViewController.swift; sourceTree = "<group>"; };
 		AAF40FA32A123C030050245F /* SelectWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWeightViewController.swift; sourceTree = "<group>"; };
+		AAF7E9092A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalWeightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				AAF40F362A0FFC140050245F /* ViewController.swift */,
+				AAF7E9092A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift */,
 				AAF40F782A10061B0050245F /* SelectGenderViewController.swift */,
 				AAF40F9D2A101EFD0050245F /* SelectGoalViewController.swift */,
 				AAF40F9F2A122B850050245F /* SelectBirthdayViewController.swift */,
@@ -283,6 +286,7 @@
 				AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */,
 				AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */,
 				AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */,
+				AAF7E90A2A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift in Sources */,
 				AAF40F9E2A101EFD0050245F /* SelectGoalViewController.swift in Sources */,
 				AAF40F6F2A1001570050245F /* FontManager.swift in Sources */,
 				AAF40FA02A122B850050245F /* SelectBirthdayViewController.swift in Sources */,
