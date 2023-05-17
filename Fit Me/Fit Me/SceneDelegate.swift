@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
-        window.rootViewController =  UINavigationController(rootViewController: SelectBirthdayViewController())
+        window.rootViewController =  UINavigationController(rootViewController: SelectWeightViewController())
         self.window = window
     }
 

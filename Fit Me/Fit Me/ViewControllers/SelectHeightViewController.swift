@@ -10,11 +10,11 @@ import SnapKit
 
 class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
-    let titleLabel = UILabel()
-    let continueButton = UIButton()
-    let heightTextField = UITextField()
-    let unitSegmentedControl = UISegmentedControl(items: ["Feet", "Cm"])
-    let heightPickerView = UIPickerView()
+    private let titleLabel = UILabel()
+    private let continueButton = UIButton()
+    private let weightTextField = UITextField()
+    private let unitSegmentedControl = UISegmentedControl(items: ["Feets", "CM"])
+    private let weightPickerView = UIPickerView()
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -28,28 +28,28 @@ class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
         view.backgroundColor = .white
 
         titleLabel.text = "Select Height"
-        titleLabel.font = UIFont.systemFont(ofSize: 26)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
         titleLabel.textColor = .black
         view.addSubview(titleLabel)
 
         unitSegmentedControl.selectedSegmentIndex = 0
         view.addSubview(unitSegmentedControl)
 
-        heightTextField.borderStyle = .roundedRect
-        heightTextField.textAlignment = .center
-        heightTextField.keyboardType = .decimalPad
-        heightTextField.delegate = self
-        view.addSubview(heightTextField)
+        weightTextField.borderStyle = .roundedRect
+        weightTextField.textAlignment = .center
+        weightTextField.keyboardType = .decimalPad
+        weightTextField.delegate = self
+        view.addSubview(weightTextField)
 
-        heightPickerView.delegate = self
-        heightPickerView.dataSource = self
-        view.addSubview(heightPickerView)
+        weightPickerView.delegate = self
+        weightPickerView.dataSource = self
+        view.addSubview(weightPickerView)
 
         continueButton.setTitle("Continue", for: .normal)
         continueButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         continueButton.setTitleColor(.white, for: .normal)
         continueButton.backgroundColor = UIColor(hexString: "#7850BF")
-        continueButton.layer.cornerRadius = 5
+        continueButton.layer.cornerRadius = 24
         view.addSubview(continueButton)
     }
 
@@ -61,25 +61,27 @@ class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
 
         unitSegmentedControl.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(69)
+            make.right.equalToSuperview().offset(-69)
         }
 
-        heightTextField.snp.makeConstraints { make in
-            make.top.equalTo(unitSegmentedControl.snp.bottom).offset(20)
+        weightTextField.snp.makeConstraints { make in
+            make.top.equalTo(unitSegmentedControl.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
             make.width.equalTo(200)
-            make.height.equalTo(40)
         }
 
-        heightPickerView.snp.makeConstraints { make in
-            make.top.equalTo(heightTextField.snp.bottom).offset(20)
+        weightPickerView.snp.makeConstraints { make in
+            make.top.equalTo(weightTextField.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(150)
         }
 
         continueButton.snp.makeConstraints { make in
-            make.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(16)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(465)
-            make.width.equalTo(359)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
+            make.width.equalTo(200)
             make.height.equalTo(48)
         }
     }
@@ -100,7 +102,16 @@ class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return unitSegmentedControl.selectedSegmentIndex == 0 ? "\(row + 1) ft" : "\(row + 1) cm"
+        return unitSegmentedControl.selectedSegmentIndex == 0 ? "\(row + 1) lbs" : "\(row + 1) kg"
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedValue = unitSegmentedControl.selectedSegmentIndex == 0 ? "\(row + 1) lbs" : "\(row + 1) kg"
+        weightTextField.text = selectedValue
+    }
+
+    // MARK: - Actions
+    @objc private func continueButtonTapped() {
+        // Handle continue button action
     }
 }
-
