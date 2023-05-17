@@ -4,8 +4,6 @@
 //
 //  Created by Rukshalie  on 2023-05-14.
 //
-
-import Foundation
 import UIKit
 import SnapKit
 
@@ -34,7 +32,6 @@ class SelectGoalViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .white
         
-        // Remove the local declaration of titleLabel
         titleLabel.text = "Select Goal"
         titleLabel.font = UIFont.systemFont(ofSize: 26)
         titleLabel.textColor = .black
@@ -64,10 +61,9 @@ class SelectGoalViewController: UIViewController {
         let continueButton = createContinueButton()
         view.addSubview(continueButton)
         continueButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(68)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(UIScreen.main.bounds.size.width - 40)
-            make.height.equalTo(50)
         }
     }
     
@@ -76,9 +72,9 @@ class SelectGoalViewController: UIViewController {
         
         let iconLabel = UILabel()
         iconLabel.text = item.icon
-        iconLabel.backgroundColor = .blue
-        iconLabel.layer.cornerRadius = 4
-        iconLabel.clipsToBounds = true
+        iconLabel.backgroundColor = UIColor(red: 120/255, green: 108/255, blue: 255/255, alpha: 0.33)
+        iconLabel.layer.cornerRadius = 28
+        iconLabel.layer.masksToBounds = true
         itemView.addSubview(iconLabel)
         
         let itemLabel = UILabel()
@@ -88,7 +84,7 @@ class SelectGoalViewController: UIViewController {
         iconLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(40)
+            make.width.height.equalTo(56)
         }
         
         itemLabel.snp.makeConstraints { make in
@@ -108,13 +104,11 @@ class SelectGoalViewController: UIViewController {
         button.setTitle("Continue", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .green
-        button.layer.cornerRadius = 34
+        button.backgroundColor = UIColor(red: 120/255, green: 80/255, blue: 191/255, alpha: 1.0)
+        button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }
-    
-  
     
     // MARK: - Setup Constraints
     private func setupConstraints() {

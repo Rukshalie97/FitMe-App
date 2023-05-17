@@ -40,6 +40,14 @@
 		AAF40FA22A1230060050245F /* SelectHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40FA12A1230060050245F /* SelectHeightViewController.swift */; };
 		AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40FA32A123C030050245F /* SelectWeightViewController.swift */; };
 		AAF7E90A2A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9092A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift */; };
+		AAF7E90C2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E90B2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift */; };
+		AAF7E90E2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E90D2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift */; };
+		AAF7E9102A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E90F2A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift */; };
+		AAF7E9132A14EEF700EF8DF6 /* CreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9122A14EEF700EF8DF6 /* CreatePlanViewController.swift */; };
+		AAF7E9152A14F39600EF8DF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9142A14F39600EF8DF6 /* HomeViewController.swift */; };
+		AAF7E9192A15053F00EF8DF6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9182A15053F00EF8DF6 /* CategoryCell.swift */; };
+		AAF7E91D2A15058B00EF8DF6 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */; };
+		AAF7E91F2A1505E500EF8DF6 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +85,14 @@
 		AAF40FA12A1230060050245F /* SelectHeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHeightViewController.swift; sourceTree = "<group>"; };
 		AAF40FA32A123C030050245F /* SelectWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWeightViewController.swift; sourceTree = "<group>"; };
 		AAF7E9092A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGoalWeightViewController.swift; sourceTree = "<group>"; };
+		AAF7E90B2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTrainingLevelViewController.swift; sourceTree = "<group>"; };
+		AAF7E90D2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseActivitiesViewController.swift; sourceTree = "<group>"; };
+		AAF7E90F2A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
+		AAF7E9122A14EEF700EF8DF6 /* CreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanViewController.swift; sourceTree = "<group>"; };
+		AAF7E9142A14F39600EF8DF6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AAF7E9182A15053F00EF8DF6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
+		AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +126,7 @@
 		AAF40F312A0FFC140050245F /* Fit Me */ = {
 			isa = PBXGroup;
 			children = (
+				AAF7E9112A14DF3F00EF8DF6 /* CollectionViewCells */,
 				AAF40F7A2A1006CE0050245F /* Extension */,
 				AAF40F492A1000290050245F /* Fonts */,
 				AAF40F482A0FFEF80050245F /* Models */,
@@ -128,12 +145,16 @@
 			isa = PBXGroup;
 			children = (
 				AAF40F362A0FFC140050245F /* ViewController.swift */,
+				AAF7E90D2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift */,
+				AAF7E90B2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift */,
 				AAF7E9092A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift */,
 				AAF40F782A10061B0050245F /* SelectGenderViewController.swift */,
 				AAF40F9D2A101EFD0050245F /* SelectGoalViewController.swift */,
 				AAF40F9F2A122B850050245F /* SelectBirthdayViewController.swift */,
 				AAF40FA12A1230060050245F /* SelectHeightViewController.swift */,
 				AAF40FA32A123C030050245F /* SelectWeightViewController.swift */,
+				AAF7E9122A14EEF700EF8DF6 /* CreatePlanViewController.swift */,
+				AAF7E9142A14F39600EF8DF6 /* HomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -185,6 +206,17 @@
 				AAF40F9B2A1018230050245F /* View.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		AAF7E9112A14DF3F00EF8DF6 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				AAF7E90F2A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift */,
+				AAF7E9182A15053F00EF8DF6 /* CategoryCell.swift */,
+				AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */,
+				AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,12 +313,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF7E90E2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift in Sources */,
 				AAF40FA22A1230060050245F /* SelectHeightViewController.swift in Sources */,
 				AAF40F372A0FFC140050245F /* ViewController.swift in Sources */,
+				AAF7E9152A14F39600EF8DF6 /* HomeViewController.swift in Sources */,
 				AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */,
+				AAF7E9192A15053F00EF8DF6 /* CategoryCell.swift in Sources */,
 				AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */,
+				AAF7E9102A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift in Sources */,
 				AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */,
+				AAF7E9132A14EEF700EF8DF6 /* CreatePlanViewController.swift in Sources */,
 				AAF7E90A2A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift in Sources */,
+				AAF7E91F2A1505E500EF8DF6 /* WorkoutCell.swift in Sources */,
+				AAF7E90C2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift in Sources */,
+				AAF7E91D2A15058B00EF8DF6 /* ExerciseCell.swift in Sources */,
 				AAF40F9E2A101EFD0050245F /* SelectGoalViewController.swift in Sources */,
 				AAF40F6F2A1001570050245F /* FontManager.swift in Sources */,
 				AAF40FA02A122B850050245F /* SelectBirthdayViewController.swift in Sources */,
