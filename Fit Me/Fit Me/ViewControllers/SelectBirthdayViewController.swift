@@ -37,7 +37,7 @@ class SelectBirthdayViewController: UIViewController {
         continueButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         continueButton.setTitleColor(.white, for: .normal)
         continueButton.backgroundColor = UIColor(red: 120/255, green: 80/255, blue: 191/255, alpha: 1)
-        continueButton.layer.cornerRadius = 25
+        continueButton.layer.cornerRadius = 10
         view.addSubview(continueButton)
     }
     
