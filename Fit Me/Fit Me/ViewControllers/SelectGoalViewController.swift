@@ -19,7 +19,7 @@ class SelectGoalViewController: UIViewController {
     let items: [Item] = [Item(icon: "🌿", label: "Keep Fit"),
                          Item(icon: "🏋🏽", label: "Build Muscle Mass"),
                          Item(icon: "💪🏽", label: "Get Strong"),
-                         Item(icon: "👟", label: "Loose Weight")]
+                         Item(icon: "👟", label: "Lose Weight")]
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -72,6 +72,8 @@ class SelectGoalViewController: UIViewController {
         
         let iconLabel = UILabel()
         iconLabel.text = item.icon
+        iconLabel.font = UIFont.systemFont(ofSize: 30)
+        iconLabel.textAlignment = .center
         iconLabel.backgroundColor = UIColor(red: 120/255, green: 108/255, blue: 255/255, alpha: 0.33)
         iconLabel.layer.cornerRadius = 28
         iconLabel.layer.masksToBounds = true
@@ -79,7 +81,16 @@ class SelectGoalViewController: UIViewController {
         
         let itemLabel = UILabel()
         itemLabel.text = item.label
+        itemLabel.font = UIFont.systemFont(ofSize: 18)
+        itemLabel.textColor = .black
         itemView.addSubview(itemLabel)
+        
+        let checkbox = UIButton()
+        checkbox.setImage(UIImage(systemName: "circle"), for: .normal)
+        checkbox.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .selected)
+        checkbox.tintColor = UIColor(red: 120/255, green: 108/255, blue: 255/255, alpha: 1)
+        checkbox.addTarget(self, action: #selector(checkboxTapped(_:)), for: .touchUpInside)
+        itemView.addSubview(checkbox)
         
         iconLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
@@ -90,6 +101,12 @@ class SelectGoalViewController: UIViewController {
         itemLabel.snp.makeConstraints { make in
             make.leading.equalTo(iconLabel.snp.trailing).offset(10)
             make.centerY.equalToSuperview()
+        }
+        
+        checkbox.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-10)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(24)
         }
         
         itemView.layer.cornerRadius = 4
@@ -116,5 +133,10 @@ class SelectGoalViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    // MARK: - Checkbox Action
+    @objc private func checkboxTapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
 }
