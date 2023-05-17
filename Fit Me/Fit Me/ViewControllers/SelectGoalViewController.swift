@@ -7,6 +7,9 @@
 import UIKit
 import SnapKit
 
+import UIKit
+import SnapKit
+
 class SelectGoalViewController: UIViewController {
     let titleLabel = UILabel()
     
@@ -14,12 +17,15 @@ class SelectGoalViewController: UIViewController {
         var id = UUID().uuidString
         var icon: String
         var label: String
+        var isSelected: Bool = false
     }
     
-    let items: [Item] = [Item(icon: "🌿", label: "Keep Fit"),
-                         Item(icon: "🏋🏽", label: "Build Muscle Mass"),
-                         Item(icon: "💪🏽", label: "Get Strong"),
-                         Item(icon: "👟", label: "Lose Weight")]
+    let items: [Item] = [
+        Item(icon: "🌿", label: "Keep Fit"),
+        Item(icon: "🏋🏽", label: "Build Muscle Mass"),
+        Item(icon: "💪🏽", label: "Get Strong"),
+        Item(icon: "👟", label: "Lose Weight")
+    ]
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -62,7 +68,7 @@ class SelectGoalViewController: UIViewController {
         view.addSubview(continueButton)
         continueButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(68)
+            make.height.equalTo(48)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
     }
@@ -109,9 +115,16 @@ class SelectGoalViewController: UIViewController {
             make.width.height.equalTo(24)
         }
         
-        itemView.layer.cornerRadius = 4
-        itemView.layer.borderWidth = 2
+        itemView.layer.cornerRadius = 15
+        itemView.layer.borderWidth = 0.5
+        itemView.layer.masksToBounds = true
+        
+        // Set initial border color to gray
         itemView.layer.borderColor = UIColor.gray.cgColor
+        
+        // Set initial selection state
+        checkbox.isSelected = item.isSelected
+        updateItemView(itemView, isSelected: item.isSelected)
         
         return itemView
     }
@@ -138,5 +151,13 @@ class SelectGoalViewController: UIViewController {
     // MARK: - Checkbox Action
     @objc private func checkboxTapped(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        if let itemView = sender.superview {
+            updateItemView(itemView, isSelected: sender.isSelected)
+        }
+    }
+    
+    // MARK: - Update Item View
+    private func updateItemView(_ itemView: UIView, isSelected: Bool) {
+        itemView.layer.borderColor = isSelected ? UIColor(red: 120/255, green: 80/255, blue: 191/255, alpha: 1.0).cgColor : UIColor.gray.cgColor
     }
 }
