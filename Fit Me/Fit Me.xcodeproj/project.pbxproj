@@ -128,6 +128,7 @@
 		AAF40F312A0FFC140050245F /* Fit Me */ = {
 			isa = PBXGroup;
 			children = (
+				AAF7E9242A1612F600EF8DF6 /* Views */,
 				AAF7E9112A14DF3F00EF8DF6 /* CollectionViewCells */,
 				AAF40F7A2A1006CE0050245F /* Extension */,
 				AAF40F492A1000290050245F /* Fonts */,
@@ -220,6 +221,13 @@
 				AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */,
 			);
 			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		AAF7E9242A1612F600EF8DF6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

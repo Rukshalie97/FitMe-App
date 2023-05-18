@@ -31,7 +31,7 @@ class SplashScreenViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
         
         let appNameLabel = UILabel()
-        appNameLabel.text = "Your App Name"
+        appNameLabel.text = "FitMe"
         appNameLabel.font = UIFont.systemFont(ofSize: 30)
         appNameLabel.textColor = .white
         appNameLabel.textAlignment = .center
@@ -43,10 +43,9 @@ class SplashScreenViewController: UIViewController {
     }
     
     private func navigateToMainScreen() {
-        // Implement your navigation logic to move to the main app screen
-        // For example, you can use a segue or present the main view controller
+       
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            // Example: Presenting the main view controller after a delay of 2 seconds
+            
             let mainViewController = HomeViewController()
             self.present(mainViewController, animated: true, completion: nil)
         }
