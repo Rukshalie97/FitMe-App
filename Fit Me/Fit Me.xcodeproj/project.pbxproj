@@ -49,6 +49,8 @@
 		AAF7E91D2A15058B00EF8DF6 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */; };
 		AAF7E91F2A1505E500EF8DF6 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */; };
 		AAF7E9232A1584ED00EF8DF6 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */; };
+		AAF7E9262A1613AD00EF8DF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9252A1613AD00EF8DF6 /* ContentView.swift */; };
+		AAF7E9282A16160400EF8DF6 /* SelectMusicProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 		AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		AAF7E9252A1613AD00EF8DF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicProviderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 				AAF7E9122A14EEF700EF8DF6 /* CreatePlanViewController.swift */,
 				AAF7E9142A14F39600EF8DF6 /* HomeViewController.swift */,
 				AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */,
+				AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 		AAF7E9242A1612F600EF8DF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAF7E9252A1613AD00EF8DF6 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,8 +342,10 @@
 				AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */,
 				AAF7E9132A14EEF700EF8DF6 /* CreatePlanViewController.swift in Sources */,
 				AAF7E90A2A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift in Sources */,
+				AAF7E9262A1613AD00EF8DF6 /* ContentView.swift in Sources */,
 				AAF7E91F2A1505E500EF8DF6 /* WorkoutCell.swift in Sources */,
 				AAF7E90C2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift in Sources */,
+				AAF7E9282A16160400EF8DF6 /* SelectMusicProviderViewController.swift in Sources */,
 				AAF7E91D2A15058B00EF8DF6 /* ExerciseCell.swift in Sources */,
 				AAF40F9E2A101EFD0050245F /* SelectGoalViewController.swift in Sources */,
 				AAF40F6F2A1001570050245F /* FontManager.swift in Sources */,
