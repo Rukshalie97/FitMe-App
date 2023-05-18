@@ -51,6 +51,7 @@
 		AAF7E9232A1584ED00EF8DF6 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */; };
 		AAF7E9262A1613AD00EF8DF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9252A1613AD00EF8DF6 /* ContentView.swift */; };
 		AAF7E9282A16160400EF8DF6 /* SelectMusicProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */; };
+		AAF7E92A2A16360100EF8DF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9292A16360100EF8DF6 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		AAF7E9252A1613AD00EF8DF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicProviderViewController.swift; sourceTree = "<group>"; };
+		AAF7E9292A16360100EF8DF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				AAF7E9142A14F39600EF8DF6 /* HomeViewController.swift */,
 				AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */,
 				AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */,
+				AAF7E9292A16360100EF8DF6 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				AAF40F372A0FFC140050245F /* ViewController.swift in Sources */,
 				AAF7E9152A14F39600EF8DF6 /* HomeViewController.swift in Sources */,
 				AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */,
+				AAF7E92A2A16360100EF8DF6 /* ProfileViewController.swift in Sources */,
 				AAF7E9192A15053F00EF8DF6 /* CategoryCell.swift in Sources */,
 				AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */,
 				AAF7E9102A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift in Sources */,
