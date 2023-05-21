@@ -56,4 +56,20 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderWidth = 0.5
         contentView.layer.borderColor = UIColor(red: 229/255, green: 233/255, blue: 239/255, alpha: 1.0).cgColor
     }
+    
+    override var isSelected: Bool{
+        willSet{
+            super.isSelected = newValue
+            if newValue
+            {
+                self.contentView.layer.borderColor = UIColor(red: 120/255, green: 80/255, blue: 191/255, alpha: 1.0).cgColor
+                self.checkbox.isSelected = true
+            }
+            else
+            {
+                self.contentView.layer.borderColor = UIColor(red: 229/255, green: 233/255, blue: 239/255, alpha: 1.0).cgColor
+                self.checkbox.isSelected = false
+            }
+        }
+    }
 }

@@ -39,6 +39,11 @@ class SelectBirthdayViewController: UIViewController {
         continueButton.backgroundColor = UIColor(red: 120/255, green: 80/255, blue: 191/255, alpha: 1)
         continueButton.layer.cornerRadius = 10
         view.addSubview(continueButton)
+        continueButton.addTarget(self, action: #selector(continueFunction), for: .touchUpInside)
+    }
+    
+    @objc func continueFunction(){
+        self.navigationController?.pushViewController(SelectHeightViewController(), animated: true)
     }
     
     private func setupConstraints() {

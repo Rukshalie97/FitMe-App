@@ -51,6 +51,11 @@ class SelectGoalWeightViewController: UIViewController, UIPickerViewDelegate, UI
         continueButton.backgroundColor = UIColor(hex: "#7850BF")
         continueButton.layer.cornerRadius = 24
         view.addSubview(continueButton)
+        continueButton.addTarget(self, action: #selector(continueFunction), for: .touchUpInside)
+    }
+    
+    @objc func continueFunction(){
+        self.navigationController?.pushViewController(ChooseTrainingLevelViewController(), animated: true)
     }
 
     private func setupConstraints() {

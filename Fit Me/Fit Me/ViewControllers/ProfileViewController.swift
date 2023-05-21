@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileUIViewController: UIViewController {
+class ProfileViewController: UIViewController {
     
     let headingLabel = UILabel()
     let profileImageView = UIImageView()

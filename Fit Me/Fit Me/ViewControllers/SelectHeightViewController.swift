@@ -51,6 +51,11 @@ class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
         continueButton.backgroundColor = UIColor(hexString: "#7850BF")
         continueButton.layer.cornerRadius = 24
         view.addSubview(continueButton)
+        continueButton.addTarget(self, action: #selector(continueFunction), for: .touchUpInside)
+    }
+    
+    @objc func continueFunction(){
+        self.navigationController?.pushViewController(SelectWeightViewController(), animated: true)
     }
 
     private func setupConstraints() {

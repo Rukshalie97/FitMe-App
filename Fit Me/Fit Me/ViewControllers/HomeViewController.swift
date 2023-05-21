@@ -6,151 +6,364 @@
 //
 import UIKit
 import SnapKit
+import Kingfisher
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController {
     
-    // MARK: - Properties
-    let welcomeLabel = UILabel()
-    let searchBar = UISearchBar()
-    var collectionView: UICollectionView!
+    var collectionView : UICollectionView!
     
-    let categories = ["Cardio", "Yoga", "Stretch", "Gym"]
-    let workouts = [("Rapid Lower Body", "Beginner", "42 min"), ("Bodyweight Stretch", "Beginner", "25 min")]
-    let exercises = [("Front and Back Lunge", "0:30"), ("Side Plank", "0:30"), ("Arm circles", "0:30"), ("Sumo Squat", "0:30")]
+    var tableView: UITableView!
     
-    enum SectionLayoutKind: Int, CaseIterable {
-        case category
-        case workout
-        case exercise
-    }
+    let categories = [Categories(name: "Yoga", image: "🧘🏽"), Categories(name: "Cardio", image: "🏃🏽‍♂️"), Categories(name: "Stretch", image: "🤸🏽"), Categories(name: "Weight Loss", image: "🏋🏽")]
     
-    // MARK: - Lifecycle
+    let welcomeLabel : UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 24, weight: .bold)
+        
+        return label
+    }()
+    
+    let categoryLabel : UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        
+        return label
+    }()
+    
+    let workoutLabel : UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        
+        return label
+    }()
+    
+    var categoryJSON : [CategoryModel] = []
+    var personalWorkoutsJSON : [PersonalWorkoutsModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
-        setupConstraints()
-    }
-    
-    // MARK: - Setup Views
-    private func setupViews() {
         view.backgroundColor = .white
         
-        welcomeLabel.text = "Hi, Rukshalie"
-        welcomeLabel.font = UIFont.systemFont(ofSize: 26)
-        view.addSubview(welcomeLabel)
+        addComponents()
         
-        searchBar.placeholder = "Search something"
-        view.addSubview(searchBar)
+        addContraint()
         
-        let layout = createCompositionalLayout()
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
-        collectionView.register(WorkoutCell.self, forCellWithReuseIdentifier: WorkoutCell.identifier)
-        collectionView.register(ExerciseCell.self, forCellWithReuseIdentifier: ExerciseCell.identifier)
-        view.addSubview(collectionView)
+        configDataItems()
+        
+        loadCategories()
+        
+        loadPersonalWorkouts()
     }
     
-    // MARK: - Setup Constraints
-    private func setupConstraints() {
+
+    func addComponents(){
+        
+        view.addSubview(welcomeLabel)
+        view.addSubview(categoryLabel)
+        view.addSubview(workoutLabel)
+        
+        tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(HomeTableCell.self, forCellReuseIdentifier: "Cell")
+        
+        view.addSubview(tableView)
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.backgroundColor = UIColor.white
+        
+        self.view.addSubview(collectionView)
+        
+        
+    }
+    
+    func addContraint(){
+        
         welcomeLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
-            make.leading.equalToSuperview().offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
+            make.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
+            make.height.equalTo(60)
         }
         
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(welcomeLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(20)
+        categoryLabel.snp.makeConstraints { make in
+            make.top.equalTo(welcomeLabel.snp_bottomMargin).offset(10)
+            make.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
+            make.height.equalTo(40)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(20)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(22)
+            make.trailing.equalToSuperview().offset(-12)
+            make.height.equalTo(130)
+            make.top.equalTo(categoryLabel.snp_bottomMargin).offset(20)
         }
+        
+        workoutLabel.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp_bottomMargin).offset(20)
+            make.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
+            make.height.equalTo(40)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
+            make.top.equalTo(workoutLabel.snp_bottomMargin).offset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(10)
+        }
+        
     }
     
-    // MARK: - Create Compositional Layout
-    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            let sectionLayoutKind = SectionLayoutKind(rawValue: sectionIndex)!
-            
-            switch sectionLayoutKind {
-            case .category:
-                // Horizontal list
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1.0))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .absolute(100))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.orthogonalScrollingBehavior = .continuous
-                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-                return section
-                
-            case .workout:
-                // Vertical list
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(200))
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-                return section
-                
-            case .exercise:
-                // Grid
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(200))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-                return section
+    func configDataItems(){
+        welcomeLabel.text = "Welcome to FitMe!"
+        categoryLabel.text = "Category"
+        workoutLabel.text = "Workout Plan fits for You"
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        
+    }
+    
+    func loadCategories(){
+        NetworkManager.shared.fetchJSONData(urlString: APIManager.getCategories , from: self.view, decodingType: [CategoryModel].self) { (result: Result<[CategoryModel], Error>) in
+            switch result {
+            case .success(let cat):
+                self.categoryJSON = cat
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+               
+            case .failure(let error):
+                print("Network or parsing error: \(error.localizedDescription)")
             }
         }
-        return layout
     }
     
-    // MARK: - Collection View Delegate & Data Source
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return categories.count
-        case 1:
-            return workouts.count
-        case 2:
-            return exercises.count
-        default:
-            return 0
+    func loadPersonalWorkouts(){
+        NetworkManager.shared.fetchJSONData(urlString: APIManager.getPersonalWorkouts , from: self.view, decodingType: [PersonalWorkoutsModel].self) { (result: Result<[PersonalWorkoutsModel], Error>) in
+            switch result {
+            case .success(let cat):
+                self.personalWorkoutsJSON = cat
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+               
+            case .failure(let error):
+                print("Network or parsing error: \(error.localizedDescription)")
+            }
         }
+    }
+    
+}
+
+extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryJSON.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
-            cell.titleLabel.text = categories[indexPath.item]
-            return cell
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkoutCell.identifier, for: indexPath) as! WorkoutCell
-            let workout = workouts[indexPath.item]
-            cell.titleLabel.text = workout.0
-            cell.subTitleLabel.text = workout.1
-            cell.timeLabel.text = workout.2
-            return cell
-        case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExerciseCell.identifier, for: indexPath) as! ExerciseCell
-            let exercise = exercises[indexPath.item]
-            cell.titleLabel.text = exercise.0
-            cell.timeLabel.text = exercise.1
-            return cell
-        default:
-            return UICollectionViewCell()
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CategoryCell
+        cell.iconLabel.text = categoryJSON[indexPath.row].icon
+        cell.titleLabel.text = categoryJSON[indexPath.row].name
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 130, height: 130)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("workout")
+        let vc = WorkoutsForCategoryViewControllers()
+        vc.selectedCatName = categoryJSON[indexPath.row].name
+        vc.selectedCatogory = categoryJSON[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return personalWorkoutsJSON.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HomeTableCell
+        let imageName = personalWorkoutsJSON[indexPath.row].image
+        
+        if let url = URL(string: APIManager.imageBase + imageName){
+            cell.iconImageView.kf.setImage(with: url)
+        }
+        cell.titleLabel.text = personalWorkoutsJSON[indexPath.row].name
+        cell.subtitleLabel.text = personalWorkoutsJSON[indexPath.row].duration
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = SingleWorkoutViewController()
+        vc.selectedPersonalWorkOut = personalWorkoutsJSON[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+class CategoryCell: UICollectionViewCell {
+    
+    let iconLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 30)
+        return label
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let bgImage : UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "cat-bg")
+        return imageView
+    }()
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        addSubview(bgImage)
+        bgImage.addSubview(titleLabel)
+        bgImage.addSubview(iconLabel)
+        
+        bgImage.snp.makeConstraints { make in
+            make.leading.top.equalToSuperview().offset(4)
+            make.trailing.bottom.equalToSuperview().offset(-4)
+            
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-10)
+            make.leading.equalToSuperview().offset(4)
+            make.trailing.equalToSuperview().offset(-4)
+            make.height.equalTo(20)
+        }
+        
+        iconLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(4)
+            make.trailing.equalToSuperview().offset(-4)
+            make.top.equalToSuperview().offset(4)
+            make.bottom.equalTo(titleLabel.snp_topMargin)
+        }
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class HomeTableCell: UITableViewCell {
+    
+    var iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "exe-placeholder")
+        imageView.layer.cornerRadius = 14
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    var bgImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.image = UIImage(named: "ex-bg")
+        return imageView
+    }()
+    
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        return label
+    }()
+    
+    var subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .light)
+        label.textColor = UIColor(hexString: "#7850BF")
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(bgImageView)
+        
+        self.selectionStyle = .none
+        
+        bgImageView.addSubview(iconImageView)
+        bgImageView.addSubview(titleLabel)
+        bgImageView.addSubview(subtitleLabel)
+        
+        bgImageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(14)
+            make.trailing.equalToSuperview().offset(-14)
+            make.top.equalToSuperview().offset(8)
+            make.bottom.equalToSuperview().offset(-8)
+        }
+        
+        iconImageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(4)
+            make.top.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+            make.width.equalTo(100)
+        }
+
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(iconImageView.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+            //make.top.equalTo(iconImageView)
+            make.centerY.equalTo(bgImageView.snp.centerY).offset(-12)
+        }
+
+        subtitleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(titleLabel)
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+//data model
+struct Categories {
+    var name : String
+    var image : String
+}
+
+struct CategoryModel: Codable {
+    let id, name, icon, createdAt: String
+    let updatedAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name, icon, createdAt, updatedAt
+    }
+}
+

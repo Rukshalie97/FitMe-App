@@ -74,6 +74,11 @@ class ChooseTrainingLevelViewController: UIViewController {
             make.width.equalTo(UIScreen.main.bounds.size.width - 40)
             make.height.equalTo(50)
         }
+        continueButton.addTarget(self, action: #selector(continueFunction), for: .touchUpInside)
+    }
+    
+    @objc func continueFunction(){
+        self.navigationController?.pushViewController(ChooseActivitiesViewController(), animated: true)
     }
     
     @objc private func itemViewTapped(_ sender: UITapGestureRecognizer) {

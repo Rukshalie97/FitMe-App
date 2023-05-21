@@ -1,3 +1,11 @@
+//
+//  ChooseActivitiesViewController.swift
+//  Fit Me
+//
+//  Created by Rukshalie  on 2023-05-18.
+//
+
+
 import UIKit
 import SnapKit
 
@@ -51,11 +59,20 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
         collectionView.dataSource = self
         collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.allowsMultipleSelection = false
+        collectionView.allowsSelection = true
         view.addSubview(collectionView)
         
         createContinueButton()
         view.addSubview(continueButton)
         continueButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        continueButton.addTarget(self, action: #selector(continueFunction), for: .touchUpInside)
+    }
+    
+    @objc func continueFunction(){
+        self.navigationController?.pushViewController(CreatePlanViewController(), animated: true)
     }
     
     // MARK: - Collection View Delegate & DataSource
@@ -82,17 +99,18 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? ActivityCollectionViewCell {
-            if selectedItems.contains(indexPath) {
-                // Deselect item
-                selectedItems.removeAll(where: { $0 == indexPath })
-            } else {
-                // Select item
-                selectedItems.append(indexPath)
-            }
-            cell.checkbox.isSelected = selectedItems.contains(indexPath)
-            collectionView.reloadItems(at: [indexPath])
-        }
+        //        if let cell = collectionView.cellForItem(at: indexPath) as? ActivityCollectionViewCell {
+        //
+        //            if selectedItems.contains(indexPath) {
+        //                // Deselect item
+        //                selectedItems.removeAll(where: { $0 == indexPath })
+        //            } else {
+        //                // Select item
+        //                selectedItems.append(indexPath)
+        //            }
+        //            cell.checkbox.isSelected = selectedItems.contains(indexPath)
+        //            collectionView.reloadItems(at: [indexPath])
+        //        }
     }
     
     // MARK: - Setup Layout

@@ -72,6 +72,11 @@ class SelectGenderViewController: UIViewController {
             make.height.equalTo(48)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
+        continueButton.addTarget(self, action: #selector(continueFunction), for: .touchUpInside)
+    }
+    
+    @objc func continueFunction(){
+        self.navigationController?.pushViewController(SelectGoalViewController(), animated: true)
     }
     
     private func createItemView(item: Item) -> UIView {

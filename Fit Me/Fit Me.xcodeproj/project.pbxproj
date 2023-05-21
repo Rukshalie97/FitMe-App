@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F322A0FFC140050245F /* AppDelegate.swift */; };
 		AAF40F352A0FFC140050245F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F342A0FFC140050245F /* SceneDelegate.swift */; };
-		AAF40F372A0FFC140050245F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F362A0FFC140050245F /* ViewController.swift */; };
+		AAF40F372A0FFC140050245F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F362A0FFC140050245F /* StartViewController.swift */; };
 		AAF40F3C2A0FFC150050245F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF40F3B2A0FFC150050245F /* Assets.xcassets */; };
 		AAF40F3F2A0FFC150050245F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAF40F3D2A0FFC150050245F /* LaunchScreen.storyboard */; };
 		AAF40F4B2A1000410050245F /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAF40F4A2A1000410050245F /* Poppins-Black.ttf */; };
@@ -45,20 +45,31 @@
 		AAF7E9102A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E90F2A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift */; };
 		AAF7E9132A14EEF700EF8DF6 /* CreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9122A14EEF700EF8DF6 /* CreatePlanViewController.swift */; };
 		AAF7E9152A14F39600EF8DF6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9142A14F39600EF8DF6 /* HomeViewController.swift */; };
-		AAF7E9192A15053F00EF8DF6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9182A15053F00EF8DF6 /* CategoryCell.swift */; };
-		AAF7E91D2A15058B00EF8DF6 /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */; };
-		AAF7E91F2A1505E500EF8DF6 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */; };
 		AAF7E9232A1584ED00EF8DF6 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */; };
 		AAF7E9262A1613AD00EF8DF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9252A1613AD00EF8DF6 /* ContentView.swift */; };
 		AAF7E9282A16160400EF8DF6 /* SelectMusicProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */; };
 		AAF7E92A2A16360100EF8DF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E9292A16360100EF8DF6 /* ProfileViewController.swift */; };
+		AAF7E92C2A163CD500EF8DF6 /* WorkoutReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E92B2A163CD500EF8DF6 /* WorkoutReminderViewController.swift */; };
+		AAF7E9302A16879100EF8DF6 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7E92F2A16879100EF8DF6 /* TabViewController.swift */; };
+		C70C418C2A19EED3006184F3 /* SingleWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70C418B2A19EED3006184F3 /* SingleWorkoutViewController.swift */; };
+		C70C418F2A19F069006184F3 /* Odeum in Frameworks */ = {isa = PBXBuildFile; productRef = C70C418E2A19F069006184F3 /* Odeum */; };
+		C70C41912A1A01F0006184F3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70C41902A1A01F0006184F3 /* APIManager.swift */; };
+		C70C41932A1A0355006184F3 /* WokoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70C41922A1A0355006184F3 /* WokoutModel.swift */; };
+		C70C41962A1A087E006184F3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C70C41952A1A087E006184F3 /* Kingfisher */; };
+		C70C41982A1A1286006184F3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70C41972A1A1286006184F3 /* OnboardingViewController.swift */; };
+		C70C419A2A1A2FF7006184F3 /* PersonalWorkoutsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70C41992A1A2FF7006184F3 /* PersonalWorkoutsModel.swift */; };
+		C79978942A18C8500016AA3F /* MKRingProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = C79978932A18C8500016AA3F /* MKRingProgressView */; };
+		C79978962A18E1CF0016AA3F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79978952A18E1CF0016AA3F /* SignUpViewController.swift */; };
+		C79978982A195EC10016AA3F /* WorkoutsForCategoryViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79978972A195EC10016AA3F /* WorkoutsForCategoryViewControllers.swift */; };
+		C799789B2A1965070016AA3F /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C799789A2A1965070016AA3F /* MBProgressHUD */; };
+		C799789D2A1965320016AA3F /* NetwokManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C799789C2A1965320016AA3F /* NetwokManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AAF40F2F2A0FFC140050245F /* Fit Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF40F322A0FFC140050245F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAF40F342A0FFC140050245F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AAF40F362A0FFC140050245F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AAF40F362A0FFC140050245F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		AAF40F3B2A0FFC150050245F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAF40F3E2A0FFC150050245F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAF40F402A0FFC150050245F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,13 +105,20 @@
 		AAF7E90F2A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAF7E9122A14EEF700EF8DF6 /* CreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanViewController.swift; sourceTree = "<group>"; };
 		AAF7E9142A14F39600EF8DF6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		AAF7E9182A15053F00EF8DF6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
-		AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		AAF7E9252A1613AD00EF8DF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicProviderViewController.swift; sourceTree = "<group>"; };
 		AAF7E9292A16360100EF8DF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AAF7E92B2A163CD500EF8DF6 /* WorkoutReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReminderViewController.swift; sourceTree = "<group>"; };
+		AAF7E92F2A16879100EF8DF6 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		C70C418B2A19EED3006184F3 /* SingleWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleWorkoutViewController.swift; sourceTree = "<group>"; };
+		C70C41902A1A01F0006184F3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		C70C41922A1A0355006184F3 /* WokoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WokoutModel.swift; sourceTree = "<group>"; };
+		C70C41972A1A1286006184F3 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C70C41992A1A2FF7006184F3 /* PersonalWorkoutsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalWorkoutsModel.swift; sourceTree = "<group>"; };
+		C79978952A18E1CF0016AA3F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C79978972A195EC10016AA3F /* WorkoutsForCategoryViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsForCategoryViewControllers.swift; sourceTree = "<group>"; };
+		C799789C2A1965320016AA3F /* NetwokManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwokManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +126,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C799789B2A1965070016AA3F /* MBProgressHUD in Frameworks */,
+				C79978942A18C8500016AA3F /* MKRingProgressView in Frameworks */,
 				AAF40F772A10037B0050245F /* SnapKit in Frameworks */,
+				C70C418F2A19F069006184F3 /* Odeum in Frameworks */,
+				C70C41962A1A087E006184F3 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,8 +175,9 @@
 		AAF40F462A0FFEE60050245F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				AAF40F362A0FFC140050245F /* ViewController.swift */,
+				AAF40F362A0FFC140050245F /* StartViewController.swift */,
 				AAF7E90D2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift */,
+				C79978952A18E1CF0016AA3F /* SignUpViewController.swift */,
 				AAF7E90B2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift */,
 				AAF7E9092A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift */,
 				AAF40F782A10061B0050245F /* SelectGenderViewController.swift */,
@@ -167,6 +190,11 @@
 				AAF7E9222A1584ED00EF8DF6 /* SplashScreenViewController.swift */,
 				AAF7E9272A16160400EF8DF6 /* SelectMusicProviderViewController.swift */,
 				AAF7E9292A16360100EF8DF6 /* ProfileViewController.swift */,
+				AAF7E92B2A163CD500EF8DF6 /* WorkoutReminderViewController.swift */,
+				AAF7E92F2A16879100EF8DF6 /* TabViewController.swift */,
+				C79978972A195EC10016AA3F /* WorkoutsForCategoryViewControllers.swift */,
+				C70C418B2A19EED3006184F3 /* SingleWorkoutViewController.swift */,
+				C70C41972A1A1286006184F3 /* OnboardingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -174,7 +202,9 @@
 		AAF40F472A0FFEEF0050245F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				C799789C2A1965320016AA3F /* NetwokManager.swift */,
 				AAF40F6E2A1001570050245F /* FontManager.swift */,
+				C70C41902A1A01F0006184F3 /* APIManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -182,6 +212,8 @@
 		AAF40F482A0FFEF80050245F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C70C41922A1A0355006184F3 /* WokoutModel.swift */,
+				C70C41992A1A2FF7006184F3 /* PersonalWorkoutsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,9 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				AAF7E90F2A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift */,
-				AAF7E9182A15053F00EF8DF6 /* CategoryCell.swift */,
-				AAF7E91C2A15058B00EF8DF6 /* ExerciseCell.swift */,
-				AAF7E91E2A1505E500EF8DF6 /* WorkoutCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -257,6 +286,10 @@
 			name = "Fit Me";
 			packageProductDependencies = (
 				AAF40F762A10037B0050245F /* SnapKit */,
+				C79978932A18C8500016AA3F /* MKRingProgressView */,
+				C799789A2A1965070016AA3F /* MBProgressHUD */,
+				C70C418E2A19F069006184F3 /* Odeum */,
+				C70C41952A1A087E006184F3 /* Kingfisher */,
 			);
 			productName = "Fit Me";
 			productReference = AAF40F2F2A0FFC140050245F /* Fit Me.app */;
@@ -288,6 +321,10 @@
 			mainGroup = AAF40F262A0FFC140050245F;
 			packageReferences = (
 				AAF40F752A10037B0050245F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C79978922A18C8500016AA3F /* XCRemoteSwiftPackageReference "MKRingProgressView" */,
+				C79978992A1965070016AA3F /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				C70C418D2A19F069006184F3 /* XCRemoteSwiftPackageReference "Odeum" */,
+				C70C41942A1A087E006184F3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = AAF40F302A0FFC140050245F /* Products */;
 			projectDirPath = "";
@@ -336,27 +373,34 @@
 				AAF7E90E2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift in Sources */,
 				AAF40FA22A1230060050245F /* SelectHeightViewController.swift in Sources */,
 				AAF7E9232A1584ED00EF8DF6 /* SplashScreenViewController.swift in Sources */,
-				AAF40F372A0FFC140050245F /* ViewController.swift in Sources */,
+				AAF40F372A0FFC140050245F /* StartViewController.swift in Sources */,
+				AAF7E9302A16879100EF8DF6 /* TabViewController.swift in Sources */,
 				AAF7E9152A14F39600EF8DF6 /* HomeViewController.swift in Sources */,
 				AAF40FA42A123C030050245F /* SelectWeightViewController.swift in Sources */,
 				AAF7E92A2A16360100EF8DF6 /* ProfileViewController.swift in Sources */,
-				AAF7E9192A15053F00EF8DF6 /* CategoryCell.swift in Sources */,
 				AAF40F792A10061B0050245F /* SelectGenderViewController.swift in Sources */,
+				C70C41982A1A1286006184F3 /* OnboardingViewController.swift in Sources */,
+				C70C418C2A19EED3006184F3 /* SingleWorkoutViewController.swift in Sources */,
+				C799789D2A1965320016AA3F /* NetwokManager.swift in Sources */,
 				AAF7E9102A14DECB00EF8DF6 /* ActivityCollectionViewCell.swift in Sources */,
 				AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */,
 				AAF7E9132A14EEF700EF8DF6 /* CreatePlanViewController.swift in Sources */,
+				C79978982A195EC10016AA3F /* WorkoutsForCategoryViewControllers.swift in Sources */,
 				AAF7E90A2A13A3D000EF8DF6 /* SelectGoalWeightViewController.swift in Sources */,
 				AAF7E9262A1613AD00EF8DF6 /* ContentView.swift in Sources */,
-				AAF7E91F2A1505E500EF8DF6 /* WorkoutCell.swift in Sources */,
 				AAF7E90C2A14048E00EF8DF6 /* ChooseTrainingLevelViewController.swift in Sources */,
 				AAF7E9282A16160400EF8DF6 /* SelectMusicProviderViewController.swift in Sources */,
-				AAF7E91D2A15058B00EF8DF6 /* ExerciseCell.swift in Sources */,
 				AAF40F9E2A101EFD0050245F /* SelectGoalViewController.swift in Sources */,
+				C70C41912A1A01F0006184F3 /* APIManager.swift in Sources */,
+				C70C41932A1A0355006184F3 /* WokoutModel.swift in Sources */,
 				AAF40F6F2A1001570050245F /* FontManager.swift in Sources */,
+				C79978962A18E1CF0016AA3F /* SignUpViewController.swift in Sources */,
 				AAF40FA02A122B850050245F /* SelectBirthdayViewController.swift in Sources */,
 				AAF40F352A0FFC140050245F /* SceneDelegate.swift in Sources */,
+				AAF7E92C2A163CD500EF8DF6 /* WorkoutReminderViewController.swift in Sources */,
 				AAF40F9C2A1018230050245F /* View.swift in Sources */,
 				AAF40F7C2A1006DA0050245F /* Color.swift in Sources */,
+				C70C419A2A1A2FF7006184F3 /* PersonalWorkoutsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +539,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JW3AS69T8X;
+				DEVELOPMENT_TEAM = ZK49M3GRKA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fit Me/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -503,6 +547,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,7 +568,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JW3AS69T8X;
+				DEVELOPMENT_TEAM = ZK49M3GRKA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fit Me/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -531,6 +576,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,6 +622,38 @@
 				version = 5.6.0;
 			};
 		};
+		C70C418D2A19F069006184F3 /* XCRemoteSwiftPackageReference "Odeum" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hainayanda/Odeum.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		C70C41942A1A087E006184F3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		C79978922A18C8500016AA3F /* XCRemoteSwiftPackageReference "MKRingProgressView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxkonovalov/MKRingProgressView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		C79978992A1965070016AA3F /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -583,6 +661,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AAF40F752A10037B0050245F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		C70C418E2A19F069006184F3 /* Odeum */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C70C418D2A19F069006184F3 /* XCRemoteSwiftPackageReference "Odeum" */;
+			productName = Odeum;
+		};
+		C70C41952A1A087E006184F3 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C70C41942A1A087E006184F3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		C79978932A18C8500016AA3F /* MKRingProgressView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C79978922A18C8500016AA3F /* XCRemoteSwiftPackageReference "MKRingProgressView" */;
+			productName = MKRingProgressView;
+		};
+		C799789A2A1965070016AA3F /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C79978992A1965070016AA3F /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
