@@ -6,9 +6,7 @@
 //
 import UIKit
 import SnapKit
-
-import UIKit
-import SnapKit
+import SPIndicator
 
 class SelectGoalViewController: UIViewController {
     let titleLabel = UILabel()
@@ -25,115 +23,63 @@ class SelectGoalViewController: UIViewController {
         Item(icon: "🏋🏽", label: "Build Muscle Mass"),
         Item(icon: "💪🏽", label: "Get Strong"),
         Item(icon: "👟", label: "Lose Weight")
+        
     ]
+    
+    var goalTableView : UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
+    
+    var selectedIndexes = [[IndexPath.init(row: 0, section: 0)], [IndexPath.init(row: 0, section: 1)]]
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
-        setupConstraints()
-    }
-    
-    // MARK: - Setup Views
-    private func setupViews() {
+        // setupViews()
+        //setupConstraints()
         view.backgroundColor = .white
         
         titleLabel.text = "Select Goal"
         titleLabel.font = UIFont.systemFont(ofSize: 26)
         titleLabel.textColor = .black
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
-        
-        var previousItemView: UIView? = nil
-        
-        for item in items {
-            let itemView = createItemView(item: item)
-            view.addSubview(itemView)
-            
-            itemView.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(20)
-                make.height.equalTo(80)
-                
-                if let previousItemView = previousItemView {
-                    make.top.equalTo(previousItemView.snp.bottom).offset(10)
-                } else {
-                    make.top.equalTo(titleLabel.snp.bottom).offset(20)
-                }
-            }
-            
-            previousItemView = itemView
-        }
         
         let continueButton = createContinueButton()
+        
+        view.addSubview(titleLabel)
+        view.addSubview(goalTableView)
         view.addSubview(continueButton)
+        
+        goalTableView.register(SelectableCell.self, forCellReuseIdentifier: "goalCell")
+        goalTableView.delegate = self
+        goalTableView.dataSource = self
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
+            make.centerX.equalToSuperview()
+        }
+        
+        goalTableView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalTo(continueButton.snp.top).offset(-20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+        }
+        
         continueButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(48)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
-        
         continueButton.addTarget(self, action: #selector(continueFunction), for: .touchUpInside)
     }
-    
+
     @objc func continueFunction(){
-        self.navigationController?.pushViewController(SelectBirthdayViewController(), animated: true)
+        self.navigationController?.pushViewController(SelectWeightViewController(), animated: true)
+        
     }
     
-    private func createItemView(item: Item) -> UIView {
-        let itemView = UIView()
-        
-        let iconLabel = UILabel()
-        iconLabel.text = item.icon
-        iconLabel.font = UIFont.systemFont(ofSize: 30)
-        iconLabel.textAlignment = .center
-        iconLabel.backgroundColor = UIColor(red: 120/255, green: 108/255, blue: 255/255, alpha: 0.33)
-        iconLabel.layer.cornerRadius = 28
-        iconLabel.layer.masksToBounds = true
-        itemView.addSubview(iconLabel)
-        
-        let itemLabel = UILabel()
-        itemLabel.text = item.label
-        itemLabel.font = UIFont.systemFont(ofSize: 18)
-        itemLabel.textColor = .black
-        itemView.addSubview(itemLabel)
-        
-        let checkbox = UIButton()
-        checkbox.setImage(UIImage(systemName: "circle"), for: .normal)
-        checkbox.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .selected)
-        checkbox.tintColor = UIColor(red: 120/255, green: 108/255, blue: 255/255, alpha: 1)
-        checkbox.addTarget(self, action: #selector(checkboxTapped(_:)), for: .touchUpInside)
-        itemView.addSubview(checkbox)
-        
-        iconLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(10)
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(56)
-        }
-        
-        itemLabel.snp.makeConstraints { make in
-            make.leading.equalTo(iconLabel.snp.trailing).offset(10)
-            make.centerY.equalToSuperview()
-        }
-        
-        checkbox.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-10)
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(24)
-        }
-        
-        itemView.layer.cornerRadius = 15
-        itemView.layer.borderWidth = 0.5
-        itemView.layer.masksToBounds = true
-        
-        // Set initial border color to gray
-        itemView.layer.borderColor = UIColor.gray.cgColor
-        
-        // Set initial selection state
-        checkbox.isSelected = item.isSelected
-        updateItemView(itemView, isSelected: item.isSelected)
-        
-        return itemView
-    }
     
     private func createContinueButton() -> UIButton {
         let button = UIButton()
@@ -146,24 +92,56 @@ class SelectGoalViewController: UIViewController {
         return button
     }
     
-    // MARK: - Setup Constraints
-    private func setupConstraints() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
-            make.centerX.equalToSuperview()
-        }
-    }
-    
-    // MARK: - Checkbox Action
-    @objc private func checkboxTapped(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if let itemView = sender.superview {
-            updateItemView(itemView, isSelected: sender.isSelected)
-        }
-    }
     
     // MARK: - Update Item View
     private func updateItemView(_ itemView: UIView, isSelected: Bool) {
         itemView.layer.borderColor = isSelected ? UIColor(red: 120/255, green: 80/255, blue: 191/255, alpha: 1.0).cgColor : UIColor.gray.cgColor
+        itemView.layer.borderWidth = 2
     }
 }
+
+extension SelectGoalViewController : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : SelectableCell = tableView.dequeueReusableCell(withIdentifier: "goalCell", for: indexPath) as! SelectableCell
+        cell.itemLabel.text = items[indexPath.row].label
+        cell.iconLabel.text = items[indexPath.row].icon
+        
+        cell.selectionStyle = .none
+        
+        let selectedSectionIndexes = self.selectedIndexes[indexPath.section]
+        if selectedSectionIndexes.contains(indexPath) {
+            cell.checkbox.isSelected = true
+        }
+        else {
+            cell.checkbox.isSelected = false
+        }
+        cell.runCheck()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        items.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell : SelectableCell = tableView.cellForRow(at: indexPath) as! SelectableCell
+
+        if !self.selectedIndexes[indexPath.section].contains(indexPath) {
+             
+                //cell?.accessoryType = .checkmark
+            cell.checkbox.isSelected = true
+               self.selectedIndexes[indexPath.section].removeAll()
+
+               self.selectedIndexes[indexPath.section].append(indexPath)
+            cell.runCheck()
+               tableView.reloadData()
+           }
+    }
+}
+
+

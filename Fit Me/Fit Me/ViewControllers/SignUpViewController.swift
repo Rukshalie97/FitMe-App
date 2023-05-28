@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
         
         
         signInButton.setTitle("Sign In", for: .normal)
-        signInButton.setTitleColor(.systemBlue, for: .normal)
+        signInButton.setTitleColor(.purple, for: .normal)
         
         
         signInStackView.axis = .horizontal

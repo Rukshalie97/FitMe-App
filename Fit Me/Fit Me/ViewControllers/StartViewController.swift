@@ -11,12 +11,16 @@ class StartViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
-            
+        
+        //UserDefaults.standard.set(false, forKey: "isLogged")
+        
             checkLoginStatus()
         }
         
         private func checkLoginStatus() {
             let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+            
+            
             
             if isLogged {
                 navigateToHomeViewController()

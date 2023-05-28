@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SPIndicator
 
 class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -29,6 +30,8 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
                          Item(emoji: "💪", activity: "Abs"),
                          Item(emoji: "💪", activity: "Chest"),
                          Item(emoji: "💪", activity: "Back")]
+    
+    var selectedItem : Item?
     
     let continueButton = UIButton()
     var collectionView: UICollectionView!
@@ -72,7 +75,12 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
     }
     
     @objc func continueFunction(){
-        self.navigationController?.pushViewController(CreatePlanViewController(), animated: true)
+        if selectedItems.count > 0{
+            self.navigationController?.pushViewController(CreatePlanViewController(), animated: true)
+        }else{
+            SPIndicator.present(title: "Please Select Activities to Continue", preset : .error, haptic: .warning)
+        }
+       
     }
     
     // MARK: - Collection View Delegate & DataSource
@@ -99,18 +107,21 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        if let cell = collectionView.cellForItem(at: indexPath) as? ActivityCollectionViewCell {
-        //
-        //            if selectedItems.contains(indexPath) {
-        //                // Deselect item
-        //                selectedItems.removeAll(where: { $0 == indexPath })
-        //            } else {
-        //                // Select item
-        //                selectedItems.append(indexPath)
-        //            }
-        //            cell.checkbox.isSelected = selectedItems.contains(indexPath)
-        //            collectionView.reloadItems(at: [indexPath])
-        //        }
+//                if let cell = collectionView.cellForItem(at: indexPath) as? ActivityCollectionViewCell {
+//
+//                    if selectedItems.contains(indexPath) {
+//                        // Deselect item
+//                        selectedItems.removeAll(where: { $0 == indexPath })
+//                    } else {
+//                        // Select item
+//                        selectedItems.append(indexPath)
+//                    }
+//                  //  cell.checkbox.isSelected = selectedItems.contains(indexPath)
+//                    collectionView.reloadItems(at: [indexPath])
+//                }
+        
+        
+        
     }
     
     // MARK: - Setup Layout

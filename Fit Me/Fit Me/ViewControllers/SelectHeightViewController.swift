@@ -16,14 +16,14 @@ class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
     private let unitSegmentedControl = UISegmentedControl(items: ["Feets", "CM"])
     private let weightPickerView = UIPickerView()
 
-    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
 
-    // MARK: - Setup Views
+   
     private func setupViews() {
         view.backgroundColor = .white
 
@@ -91,13 +91,13 @@ class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
 
-    // MARK: - UITextFieldDelegate
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 
-    // MARK: - UIPickerViewDelegate and UIPickerViewDataSource
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -115,8 +115,8 @@ class SelectHeightViewController: UIViewController, UIPickerViewDelegate, UIPick
         weightTextField.text = selectedValue
     }
 
-    // MARK: - Actions
+
     @objc private func continueButtonTapped() {
-        // Handle continue button action
+       
     }
 }

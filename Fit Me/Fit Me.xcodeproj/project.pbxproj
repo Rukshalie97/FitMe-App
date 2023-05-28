@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3048A62A23059A00393689 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = AA3048A52A23059A00393689 /* SPIndicator */; };
+		AA3048A82A23277C00393689 /* SelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3048A72A23277C00393689 /* SelectableCell.swift */; };
 		AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F322A0FFC140050245F /* AppDelegate.swift */; };
 		AAF40F352A0FFC140050245F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F342A0FFC140050245F /* SceneDelegate.swift */; };
 		AAF40F372A0FFC140050245F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F362A0FFC140050245F /* StartViewController.swift */; };
@@ -66,6 +68,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA3048A72A23277C00393689 /* SelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableCell.swift; sourceTree = "<group>"; };
 		AAF40F2F2A0FFC140050245F /* Fit Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF40F322A0FFC140050245F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAF40F342A0FFC140050245F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 				AAF40F772A10037B0050245F /* SnapKit in Frameworks */,
 				C70C418F2A19F069006184F3 /* Odeum in Frameworks */,
 				C70C41962A1A087E006184F3 /* Kingfisher in Frameworks */,
+				AA3048A62A23059A00393689 /* SPIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +199,7 @@
 				C79978972A195EC10016AA3F /* WorkoutsForCategoryViewControllers.swift */,
 				C70C418B2A19EED3006184F3 /* SingleWorkoutViewController.swift */,
 				C70C41972A1A1286006184F3 /* OnboardingViewController.swift */,
+				AA3048A72A23277C00393689 /* SelectableCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				C799789A2A1965070016AA3F /* MBProgressHUD */,
 				C70C418E2A19F069006184F3 /* Odeum */,
 				C70C41952A1A087E006184F3 /* Kingfisher */,
+				AA3048A52A23059A00393689 /* SPIndicator */,
 			);
 			productName = "Fit Me";
 			productReference = AAF40F2F2A0FFC140050245F /* Fit Me.app */;
@@ -325,6 +331,7 @@
 				C79978992A1965070016AA3F /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				C70C418D2A19F069006184F3 /* XCRemoteSwiftPackageReference "Odeum" */,
 				C70C41942A1A087E006184F3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AA3048A42A23059A00393689 /* XCRemoteSwiftPackageReference "SPIndicator" */,
 			);
 			productRefGroup = AAF40F302A0FFC140050245F /* Products */;
 			projectDirPath = "";
@@ -373,6 +380,7 @@
 				AAF7E90E2A14C29F00EF8DF6 /* ChooseActivitiesViewController.swift in Sources */,
 				AAF40FA22A1230060050245F /* SelectHeightViewController.swift in Sources */,
 				AAF7E9232A1584ED00EF8DF6 /* SplashScreenViewController.swift in Sources */,
+				AA3048A82A23277C00393689 /* SelectableCell.swift in Sources */,
 				AAF40F372A0FFC140050245F /* StartViewController.swift in Sources */,
 				AAF7E9302A16879100EF8DF6 /* TabViewController.swift in Sources */,
 				AAF7E9152A14F39600EF8DF6 /* HomeViewController.swift in Sources */,
@@ -539,7 +547,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZK49M3GRKA;
+				DEVELOPMENT_TEAM = JW3AS69T8X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fit Me/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -568,7 +576,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZK49M3GRKA;
+				DEVELOPMENT_TEAM = JW3AS69T8X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fit Me/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -614,6 +622,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AA3048A42A23059A00393689 /* XCRemoteSwiftPackageReference "SPIndicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPIndicator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
 		AAF40F752A10037B0050245F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -657,6 +673,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA3048A52A23059A00393689 /* SPIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3048A42A23059A00393689 /* XCRemoteSwiftPackageReference "SPIndicator" */;
+			productName = SPIndicator;
+		};
 		AAF40F762A10037B0050245F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AAF40F752A10037B0050245F /* XCRemoteSwiftPackageReference "SnapKit" */;

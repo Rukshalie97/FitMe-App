@@ -16,14 +16,14 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
     let unitSegmentedControl = UISegmentedControl(items: ["Pounds", "Kg"])
     let weightPickerView = UIPickerView()
 
-    // MARK: - View Life Cycle
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
 
-    // MARK: - Setup Views
+    
     private func setupViews() {
         view.backgroundColor = .white
 
@@ -111,14 +111,13 @@ class SelectWeightViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     }
 
-    // MARK: - UITextFieldDelegate
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 
   
-    // MARK: - UIPickerViewDelegate and UIPickerViewDataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
