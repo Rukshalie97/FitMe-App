@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     
     var tableView: UITableView!
     
+    var userPref : UserPref?
+    
     let categories = [Categories(name: "Yoga", image: "🧘🏽"), Categories(name: "Cardio", image: "🏃🏽‍♂️"), Categories(name: "Stretch", image: "🤸🏽"), Categories(name: "Weight Loss", image: "🏋🏽")]
     
     let welcomeLabel : UILabel = {

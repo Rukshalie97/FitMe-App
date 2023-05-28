@@ -14,6 +14,8 @@ class ChooseTrainingLevelViewController: UIViewController {
     var itemViews: [UIView] = []
     var selectedItemView: UIView?
     
+    var userPref : UserPref?
+    
     struct Item: Identifiable {
         var id = UUID().uuidString
         var heading: String
@@ -78,7 +80,13 @@ class ChooseTrainingLevelViewController: UIViewController {
     }
     
     @objc func continueFunction(){
-        self.navigationController?.pushViewController(ChooseActivitiesViewController(), animated: true)
+       
+            let vc = ChooseActivitiesViewController()
+            vc.userPref = userPref
+            self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+       
     }
     
     @objc private func itemViewTapped(_ sender: UITapGestureRecognizer) {

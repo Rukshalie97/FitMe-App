@@ -16,5 +16,7 @@ class APIManager {
     static let getCategories = "https://192-53-114-201.ip.linodeusercontent.com/api/category"
     
     static let imageBase = "https://192-53-114-201.ip.linodeusercontent.com/images/"
+   
+    static let saveuserPref = "https://192-53-114-201.ip.linodeusercontent.com/api/user"
     
 }

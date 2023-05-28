@@ -15,6 +15,8 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
     let titleLabel = UILabel()
     var selectedItems: [IndexPath] = []
     
+    var userPref : UserPref?
+    
     struct Item: Identifiable {
         var id = UUID().uuidString
         var emoji: String
@@ -43,6 +45,7 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
         setupConstraints()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
     }
     
     // MARK: - Setup Views
@@ -75,8 +78,13 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
     }
     
     @objc func continueFunction(){
-        if selectedItems.count > 0{
-            self.navigationController?.pushViewController(CreatePlanViewController(), animated: true)
+       
+        print(selectedItems)
+        if let selectedItem = selectedItem{
+            userPref?.activity = selectedItem.activity
+            let vc = CreatePlanViewController()
+            vc.userPref = userPref
+            self.navigationController?.pushViewController(vc, animated: true)
         }else{
             SPIndicator.present(title: "Please Select Activities to Continue", preset : .error, haptic: .warning)
         }
@@ -119,7 +127,7 @@ class ChooseActivitiesViewController: UIViewController, UICollectionViewDelegate
 //                  //  cell.checkbox.isSelected = selectedItems.contains(indexPath)
 //                    collectionView.reloadItems(at: [indexPath])
 //                }
-        
+        selectedItem = items[indexPath.row]
         
         
     }

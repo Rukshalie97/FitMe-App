@@ -7,12 +7,15 @@
 
 import UIKit
 import SnapKit
+import SPIndicator
 
 class SelectBirthdayViewController: UIViewController {
     
     let titleLabel = UILabel()
     let datePicker = UIDatePicker()
     let continueButton = UIButton(type: .system)
+    
+    var userPref : UserPref?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +46,37 @@ class SelectBirthdayViewController: UIViewController {
     }
     
     @objc func continueFunction(){
-        self.navigationController?.pushViewController(SelectHeightViewController(), animated: true)
+        let selectedDate = datePicker.date
+        
+        // Calculate the date 14 years ago
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let fourteenYearsAgo = calendar.date(byAdding: .year, value: -14, to: currentDate)!
+        
+        
+        
+        if selectedDate > fourteenYearsAgo {
+            SPIndicator.present(title: "Selected date is not higher than 14 years", preset: .error, haptic: .error)
+            
+        } else {
+            
+            let calendar = Calendar.current
+            let ageComponents = calendar.dateComponents([.year, .month, .day], from: selectedDate, to: currentDate)
+            var age : Int = 0
+            if let years = ageComponents.year {
+                age = years
+            }
+            
+            userPref?.birthday = datePicker.date
+            userPref?.age = age
+            let vc = SelectHeightViewController()
+            vc.userPref = userPref
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            
+        }
+        
+        
     }
     
     private func setupConstraints() {

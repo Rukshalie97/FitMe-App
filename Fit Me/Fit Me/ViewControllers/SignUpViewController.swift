@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SPIndicator
 
 class SignUpViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class SignUpViewController: UIViewController {
     
     let signUpLabel = UILabel()
     
+    var userPref : UserPref = UserPref()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,9 +93,52 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func continueFunction(){
-        self.navigationController?.pushViewController(SelectGenderViewController(), animated: true)
+        if validateFields() {
+            userPref.name = fullNameField.text
+            userPref.email = emailField.text
+            userPref.password = passwordField.text
+            let vc = SelectGenderViewController()
+            vc.userPef = userPref
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            SPIndicator.present(title: "Invalid Fileds data", preset: .error, haptic: .error)
+        }
+
     }
     
+    func validateFields() -> Bool {
+        guard let fullName = fullNameField.text, !fullName.isEmpty else {
+            // Full name is empty
+            return false
+        }
+        
+        guard let email = emailField.text, !email.isEmpty else {
+            // Email is empty
+            return false
+        }
+        
+        guard isValidEmail(email) else {
+            // Email is not valid
+            return false
+        }
+        
+        guard let password = passwordField.text, !password.isEmpty else {
+            // Password is empty
+            return false
+        }
+        
+        // All fields are valid
+        return true
+    }
+
+    func isValidEmail(_ email: String) -> Bool {
+        
+        let emailRegex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+
     
     
     func configureTextField(textField: PaddedTextField, placeholder: String, isSecure: Bool = false) {

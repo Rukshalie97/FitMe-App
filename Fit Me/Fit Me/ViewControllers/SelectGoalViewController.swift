@@ -11,6 +11,8 @@ import SPIndicator
 class SelectGoalViewController: UIViewController {
     let titleLabel = UILabel()
     
+    var userPref : UserPref?
+    
     struct Item: Identifiable {
         var id = UUID().uuidString
         var icon: String
@@ -37,6 +39,9 @@ class SelectGoalViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         // setupViews()
         //setupConstraints()
         view.backgroundColor = .white
@@ -76,7 +81,11 @@ class SelectGoalViewController: UIViewController {
     }
 
     @objc func continueFunction(){
-        self.navigationController?.pushViewController(SelectWeightViewController(), animated: true)
+        
+        userPref?.goal = selectedIndexes[0][0].row
+        let vc = SelectBirthdayViewController()
+        vc.userPref = userPref
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

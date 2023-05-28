@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA3048A62A23059A00393689 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = AA3048A52A23059A00393689 /* SPIndicator */; };
 		AA3048A82A23277C00393689 /* SelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3048A72A23277C00393689 /* SelectableCell.swift */; };
+		AA3048AA2A2344E300393689 /* UserPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3048A92A2344E300393689 /* UserPref.swift */; };
+		AA3048AD2A23704E00393689 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = AA3048AC2A23704E00393689 /* SwiftyJSON */; };
 		AAF40F332A0FFC140050245F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F322A0FFC140050245F /* AppDelegate.swift */; };
 		AAF40F352A0FFC140050245F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F342A0FFC140050245F /* SceneDelegate.swift */; };
 		AAF40F372A0FFC140050245F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF40F362A0FFC140050245F /* StartViewController.swift */; };
@@ -69,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		AA3048A72A23277C00393689 /* SelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableCell.swift; sourceTree = "<group>"; };
+		AA3048A92A2344E300393689 /* UserPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPref.swift; sourceTree = "<group>"; };
 		AAF40F2F2A0FFC140050245F /* Fit Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF40F322A0FFC140050245F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAF40F342A0FFC140050245F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C799789B2A1965070016AA3F /* MBProgressHUD in Frameworks */,
+				AA3048AD2A23704E00393689 /* SwiftyJSON in Frameworks */,
 				C79978942A18C8500016AA3F /* MKRingProgressView in Frameworks */,
 				AAF40F772A10037B0050245F /* SnapKit in Frameworks */,
 				C70C418F2A19F069006184F3 /* Odeum in Frameworks */,
@@ -219,6 +223,7 @@
 			children = (
 				C70C41922A1A0355006184F3 /* WokoutModel.swift */,
 				C70C41992A1A2FF7006184F3 /* PersonalWorkoutsModel.swift */,
+				AA3048A92A2344E300393689 /* UserPref.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				C70C418E2A19F069006184F3 /* Odeum */,
 				C70C41952A1A087E006184F3 /* Kingfisher */,
 				AA3048A52A23059A00393689 /* SPIndicator */,
+				AA3048AC2A23704E00393689 /* SwiftyJSON */,
 			);
 			productName = "Fit Me";
 			productReference = AAF40F2F2A0FFC140050245F /* Fit Me.app */;
@@ -332,6 +338,7 @@
 				C70C418D2A19F069006184F3 /* XCRemoteSwiftPackageReference "Odeum" */,
 				C70C41942A1A087E006184F3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AA3048A42A23059A00393689 /* XCRemoteSwiftPackageReference "SPIndicator" */,
+				AA3048AB2A23704E00393689 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = AAF40F302A0FFC140050245F /* Products */;
 			projectDirPath = "";
@@ -404,6 +411,7 @@
 				AAF40F6F2A1001570050245F /* FontManager.swift in Sources */,
 				C79978962A18E1CF0016AA3F /* SignUpViewController.swift in Sources */,
 				AAF40FA02A122B850050245F /* SelectBirthdayViewController.swift in Sources */,
+				AA3048AA2A2344E300393689 /* UserPref.swift in Sources */,
 				AAF40F352A0FFC140050245F /* SceneDelegate.swift in Sources */,
 				AAF7E92C2A163CD500EF8DF6 /* WorkoutReminderViewController.swift in Sources */,
 				AAF40F9C2A1018230050245F /* View.swift in Sources */,
@@ -630,6 +638,14 @@
 				minimumVersion = 1.6.0;
 			};
 		};
+		AA3048AB2A23704E00393689 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		AAF40F752A10037B0050245F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -677,6 +693,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA3048A42A23059A00393689 /* XCRemoteSwiftPackageReference "SPIndicator" */;
 			productName = SPIndicator;
+		};
+		AA3048AC2A23704E00393689 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA3048AB2A23704E00393689 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 		AAF40F762A10037B0050245F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

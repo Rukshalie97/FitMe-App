@@ -18,127 +18,169 @@ class ProfileViewController: UIViewController {
     let weightTextField = UITextField()
     let bmiLabel = UILabel()
     
+    let titleLabel = UILabel()
+    let nameLabel = UILabel()
+    let emailLabel = UILabel()
+    
+    var userPref : UserPref?
+    
+    let verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    let nameMailStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    let logoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Logout", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
-        setupConstraints()
-        setupTapGesture()
-    }
-    
-    private func setupViews() {
         view.backgroundColor = .white
         
-        headingLabel.text = "Account Information"
-        headingLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        headingLabel.textColor = .black
-        view.addSubview(headingLabel)
+        print("User Pref in profile \(userPref)")
         
-        profileImageView.contentMode = .scaleAspectFit
-        profileImageView.clipsToBounds = true
-        profileImageView.layer.cornerRadius = 0
-        profileImageView.layer.borderWidth = 1
-        profileImageView.layer.borderColor = UIColor.lightGray.cgColor
-        profileImageView.isUserInteractionEnabled = true
-        view.addSubview(profileImageView)
+        titleLabel.text = "Profile"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
+        titleLabel.textColor = .black
+        view.addSubview(titleLabel)
+        view.addSubview(nameMailStack)
         
-        nameTextField.placeholder = "Name"
-        nameTextField.borderStyle = .roundedRect
-        view.addSubview(nameTextField)
+        nameLabel.text = "Name"
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        nameLabel.textColor = .black
+        nameLabel.textAlignment = .center
+        nameMailStack.addArrangedSubview(nameLabel)
         
-        genderTextField.placeholder = "Gender"
-        genderTextField.borderStyle = .roundedRect
-        view.addSubview(genderTextField)
+        emailLabel.text = "Email"
+        emailLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        emailLabel.textColor = .black
+        emailLabel.textAlignment = .center
+        nameMailStack.addArrangedSubview(emailLabel)
         
-        heightTextField.placeholder = "Height"
-        heightTextField.borderStyle = .roundedRect
-        heightTextField.keyboardType = .decimalPad
-        view.addSubview(heightTextField)
         
-        weightTextField.placeholder = "Weight"
-        weightTextField.borderStyle = .roundedRect
-        weightTextField.keyboardType = .decimalPad
-        view.addSubview(weightTextField)
+        view.addSubview(verticalStackView)
         
-        bmiLabel.font = UIFont.systemFont(ofSize: 16)
-        bmiLabel.textColor = .black
-        bmiLabel.layer.borderWidth = 1
-        bmiLabel.layer.borderColor = UIColor.purple.cgColor
-        bmiLabel.textAlignment = .center
-        view.addSubview(bmiLabel)
-    }
-    
-    private func setupConstraints() {
-        headingLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+        view.addSubview(logoutButton)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
             make.centerX.equalToSuperview()
         }
         
-        profileImageView.snp.makeConstraints { make in
-            make.width.equalTo(80)
-            make.height.equalTo(80)
-            make.left.equalToSuperview().offset(155)
-            make.top.equalToSuperview().offset(106)
-        }
-        
-        nameTextField.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.bottom).offset(20)
+        nameMailStack.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(30)
         }
         
-        genderTextField.snp.makeConstraints { make in
-            make.top.equalTo(nameTextField.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(30)
+        verticalStackView.snp.makeConstraints { make in
+            make.top.equalTo(nameMailStack.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
         }
         
-        heightTextField.snp.makeConstraints { make in
-            make.top.equalTo(genderTextField.snp.bottom).offset(10)
+        logoutButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(30)
+            make.height.equalTo(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
-        weightTextField.snp.makeConstraints { make in
-            make.top.equalTo(heightTextField.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(30)
-        }
+        let birthday = userPref?.birthday ?? Date()
         
-        bmiLabel.snp.makeConstraints { make in
-            make.top.equalTo(weightTextField.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(30)
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MMMM-dd"
+        let birthdayString = dateFormatter.string(from: birthday)
+        
+     
+        let age = userPref?.age ?? 00
+        let height = userPref?.height ?? 00
+        let heightUnit = userPref?.heightUnit ?? .centimeters
+        let weight = userPref?.weight ?? 0.0
+        let weighUnit = userPref?.weightUnit ?? .kilograms
+        let weightGoal = userPref?.weightGoal ?? 0
+        let weightGoalUnit = userPref?.weightGoalUnit ?? .kilograms
+        let gender = userPref?.gender ?? 1
+        let goal : Int = userPref?.goal ?? 0
+        let activity = userPref?.activity ?? "Yoga"
+        
+        let name = userPref?.name ?? ""
+        let email = userPref?.email ?? ""
+        
+        nameLabel.text = name
+        emailLabel.text = email
+        
+        verticalStackView.addArrangedSubview(createHorizontalStackView(labelText: "Birthday", valueText: "\(birthdayString)"))
+        verticalStackView.addArrangedSubview(createHorizontalStackView(labelText: "Age", valueText: "\(age)"))
+        verticalStackView.addArrangedSubview(createHorizontalStackView(labelText: "Height", valueText: "\(height) \(heightUnit == .centimeters ? "cm" : "ft")"))
+        verticalStackView.addArrangedSubview(createHorizontalStackView(labelText: "Weight", valueText: "\(weight) \(weighUnit == .kilograms ? "kg" : "lbs")"))
+        verticalStackView.addArrangedSubview(createHorizontalStackView(labelText: "Weight Goal", valueText:"\(weightGoal) \(weightGoalUnit == .kilograms ? "kg" : "lbs")"))
+        verticalStackView.addArrangedSubview(createHorizontalStackView(labelText: "Gender", valueText: "\(gender == 1 ? "Male" : "Female")"))
+        verticalStackView.addArrangedSubview(createHorizontalStackView(labelText: "Activity", valueText: "\(activity)"))
+        
+        
+        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
     }
     
-    private func setupTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
-        profileImageView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func profileImageTapped() {
-        let alertController = UIAlertController(title: nil, message: "Choose an option", preferredStyle: .actionSheet)
-        
-        let selectPhotoAction = UIAlertAction(title: "Select Photo", style: .default) { _ in
-            // Handle select photo action
-        }
-        alertController.addAction(selectPhotoAction)
-        
-        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default) { _ in
-            // Handle take photo action
-        }
-        alertController.addAction(takePhotoAction)
+    @objc private func logoutButtonTapped() {
+        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
+            // Perform logout action here
+            self.performLogout()
+        }
+        
         alertController.addAction(cancelAction)
+        alertController.addAction(logoutAction)
         
         present(alertController, animated: true, completion: nil)
     }
+    
+    private func performLogout() {
+        UserDefaults.standard.set(false, forKey: "isLogged")
+        let vc =  UINavigationController(rootViewController: StartViewController())
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
+    func createHorizontalStackView(labelText: String, valueText: String) -> UIStackView {
+        let horizontalStackView = UIStackView()
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.spacing = 10
+        
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .semibold)
+        label.text = labelText
+        
+        let valueLabel = UILabel()
+        valueLabel.textColor = UIColor(red: 120/255, green: 80/255, blue: 191/255, alpha: 1.0)
+        valueLabel.text = valueText
+        
+        horizontalStackView.addArrangedSubview(label)
+        horizontalStackView.addArrangedSubview(valueLabel)
+        
+        return horizontalStackView
+    }
+    
+    
     
     private func calculateBMI() -> Double? {
         guard let heightText = heightTextField.text, let height = Double(heightText),

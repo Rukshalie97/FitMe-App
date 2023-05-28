@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import MKRingProgressView
+import SwiftyJSON
 
 class CreatePlanViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class CreatePlanViewController: UIViewController {
     var displayLink: CADisplayLink?
     var counter = 0
     
+    var userPref : UserPref?
     
     
     let titleLabel : UILabel = {
@@ -49,6 +51,8 @@ class CreatePlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerUserPref()
         
         let continueButton = createContinueButton()
         
@@ -118,7 +122,12 @@ class CreatePlanViewController: UIViewController {
     @objc func continueFunction(){
        // self.navigationController?.pushViewController((), animated: true)
         UserDefaults.standard.set(true, forKey: "isLogged")
-        let homeVC = UINavigationController(rootViewController: HomeViewController())
+        let rootVC = TabViewController()
+        rootVC.userPref = userPref
+       
+        
+        let homeVC = UINavigationController(rootViewController: rootVC)
+       
         homeVC.modalPresentationStyle = .fullScreen
         present(homeVC, animated: true)
     }
@@ -146,5 +155,47 @@ class CreatePlanViewController: UIViewController {
         return button
     }
     
+    func registerUserPref(){
+        let birthday = userPref?.birthday ?? Date()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MMMM-dd"
+        let birthdayString = dateFormatter.string(from: birthday)
+     
+        let name = userPref?.name ?? ""
+        let email = userPref?.email ?? ""
+        let pass =  userPref?.password ?? ""
+        
+        let age = userPref?.age ?? 00
+        let height = userPref?.height ?? 00
+        let heightUnit = userPref?.heightUnit ?? .centimeters
+        let weight = userPref?.weight ?? 0.0
+        let weighUnit = userPref?.weightUnit ?? .kilograms
+        let weightGoal = userPref?.weightGoal ?? 0
+        let weightGoalUnit = userPref?.weightGoalUnit ?? .kilograms
+        let gender = userPref?.gender ?? 1
+        let goal : Int = userPref?.goal ?? 0
+        let activity = userPref?.activity ?? "Yoga"
+        
+        let genderString = gender == 0 ? "Male" : "Female"
+        let heightUnitString = heightUnit == .centimeters ? "cm" : "ft"
+        let weightUnitString = weighUnit == .kilograms ? "kg" : "lbs"
+        let weightGoalUnitString = weightGoalUnit == .kilograms ? "kg" : "lbs"
+        
+        let param = ["name" : name, "email" : email, "pass" : pass , "age" : String(age), "gender" : genderString, "birthday" : birthdayString, "goal" : String(goal) , "height" : String(height) + heightUnitString , "weight" : String(weight) + weightUnitString, "goal_weight" : String(weightGoal) + weightGoalUnitString ,"level" : "Beginner", "interest" : activity  ]
+        
+        NetworkManager.shared.sendJSONData(urlString: APIManager.saveuserPref, from: self.view, param: param) { result in
+            switch result{
+            case .success(let data):
+                let response = JSON(data)
+                print(response)
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+        
+    }
     
 }

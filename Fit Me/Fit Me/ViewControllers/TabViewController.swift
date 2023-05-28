@@ -11,15 +11,21 @@ import UIKit
 
 class TabViewController: UITabBarController {
     
+    var userPref : UserPref?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("User Pref \(userPref)")
+        
         let homeViewController = HomeViewController()
-                homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
-                
-                let profileViewController = ProfileViewController()
-                profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
-              
+        homeViewController.userPref =  userPref
+        homeViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        
+        let profileViewController = ProfileViewController()
+        profileViewController.userPref =  userPref 
+        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+        
         
         let controllers = [homeViewController, profileViewController]
         self.viewControllers = controllers.map { UINavigationController(rootViewController: $0) }

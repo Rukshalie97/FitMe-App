@@ -31,6 +31,7 @@ class SelectGenderViewController: UIViewController {
         return tableView
     }()
     
+    var userPef : UserPref?
     
     var selectedIndexes = [[IndexPath.init(row: 0, section: 0)], [IndexPath.init(row: 0, section: 1)]]
     
@@ -76,7 +77,11 @@ class SelectGenderViewController: UIViewController {
     }
 
     @objc func continueFunction(){
-                self.navigationController?.pushViewController(SelectGoalViewController(), animated: true)
+        let selectedIndex = selectedIndexes[0][0]
+        userPef?.gender = selectedIndex.row
+        let vc = SelectGoalViewController()
+        vc.userPref = userPef
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
